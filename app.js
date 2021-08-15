@@ -38,24 +38,30 @@ app.get('/file/:fileId', verifyToken, (req, res) => {
 			res.sendStatus(403)
 		} else {
 			const { fileId } = req.params
-			if (!fileStatusObj[fileId]) {
-				res.status(404).send('File doesn\'t exist')
-				throw 'File doesn\'t exist'
+			try {
+				if (!fileStatusObj[fileId]) {
+					res.status(404).send('File doesn\'t exist')
+					throw new Error('File doesn\'t exist')
+
+				}
+
+				if (fileStatusObj[fileId] !== 'FINISHED') {
+					res.status(400).send(fileStatusObj[fileId] === 'PROCESSING'
+						? 'File is not done processing' : 'File processing has failed')
+					throw new Error('File is not done processing or file processing has failed')
+				}
+
+				const detailsRes = await axios.get(`http://interview-api.snackable.ai/api/file/details/${fileId}`)
+				const segmentsRes = await axios.get(`http://interview-api.snackable.ai/api/file/segments/${fileId}`)
+				const response = {}
+				response.details = detailsRes.status === 200 ? detailsRes.data : {}
+				response.segments = segmentsRes.status === 200 ? segmentsRes.data : []
+
+				res.json(response)
+			} catch (e) {
+				console.error(e)
 			}
 
-			if (fileStatusObj[fileId] !== 'FINISHED') {
-				res.status(400).send(fileStatusObj[fileId] === 'PROCESSING'
-					? 'File is not done processing' : 'File processing has failed')
-				throw 'File is not done processing or file processing has failed'
-			}
-
-			const detailsRes = await axios.get(`http://interview-api.snackable.ai/api/file/details/${fileId}`)
-			const segmentsRes = await axios.get(`http://interview-api.snackable.ai/api/file/segments/${fileId}`)
-			const response = {}
-			response.details = detailsRes.status === 200 ? detailsRes.data : {}
-			response.segments = segmentsRes.status === 200 ? segmentsRes.data : []
-
-			res.json(response)
 		}
 	})
 })
