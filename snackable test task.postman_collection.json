@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "04a505c9-ac99-4c3f-9ac1-014269177e3d",
+		"name": "snackable test task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"publicKey\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfltemkY6J9PecnXhVmUoTsgLaYDd+vIDpHyXCrwdyE466LJuGSiJZVQqxE8FhaEAFLDUhvrJUtkm2fFI2NBsmbaRH3Jwp/dDDvzDnyju6DZY2yywtjN2CCo/Q5ma9b41qCaKeJKf03H3MGhc07c9PDGPZBgPaKv37IYehNekIligFE8k5kW7xJU+vhQwPfsCMYjvHNZTESeugd2vWZ6HfcwRwBs452I6ST76qyyGUXRO9ryiaxTwGgEefxAE7POOA12dOVSbHiHoph8Bl0AurtJzRr7UFF52BbW3iAVs2JDVwu5v849vdago4uTdHQo+sOMdCY+x0y1jEwR1CMeFXOQSDGgG3XwgExWunS3dJvL9sRiEgSUAwkPDrQi2K8RpCgw6WuV0pmNvWQ+SpLqexKsCiEFJXXMBxdDz6LEE9WxmG/by3gBOGgytboY8gDQQJeXF9Fk5RBcFT3gmAwy6sPQfpyQE59V4VZRkU58n5e4RlCPIu2rAm2mNGDedxx3M=\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://interview-api.snackable.ai/api/file/all?offset=15",
+					"protocol": "http",
+					"host": [
+						"interview-api",
+						"snackable",
+						"ai"
+					],
+					"path": [
+						"api",
+						"file",
+						"all"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get failed processing file",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjkwNTQxNzQsImV4cCI6MTYyOTA1NTk3NH0.26rxL71kg0sIWQnsJUfHME-FnsK49bZ4DCyhxaYKXHI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/file/f6894ea1-b145-4631-bbfe-69cab75e1ab1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"file",
+						"f6894ea1-b145-4631-bbfe-69cab75e1ab1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get file details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://interview-api.snackable.ai/api/file/details/cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6",
+					"protocol": "http",
+					"host": [
+						"interview-api",
+						"snackable",
+						"ai"
+					],
+					"path": [
+						"api",
+						"file",
+						"details",
+						"cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get File Meta Success",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjkwNTQzMDMsImV4cCI6MTYyOTA1NjEwM30.71xv2-Haqz9sug3vkv2YeZzQIeMw3Zj67Ua48unW8_A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/file/cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"file",
+						"cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjkwNTQxNzQsImV4cCI6MTYyOTA1NTk3NH0.26rxL71kg0sIWQnsJUfHME-FnsK49bZ4DCyhxaYKXHI",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get details and Segments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjkwNTYxNDcsImV4cCI6MTYyOTA1Nzk0N30.sKH-PYbwJiRAE87WNp6X4LTJYWM2GXpIQC4VFzixOgY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/file/cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"file",
+						"cfb8321c-f47f-4003-bfd2-d26d6f6ea2a6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
